@@ -1,6 +1,14 @@
-FROM openjdk:11-jre-slim
-VOLUME /tmp
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+# Use a base image with Java runtime environment
+FROM openjdk:11-jdk-slim
 
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the jar file into the container
+COPY target/your-spring-boot-app.jar app.jar
+
+# Expose the application port
+EXPOSE 8080
+
+# Command to run the application
+ENTRYPOINT ["java", "-jar", "app.jar"]
