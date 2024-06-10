@@ -4,6 +4,8 @@ services:
   mysql:
     image: mysql:8.0
     container_name: mysql
+    networks:
+      - mynetwork
     environment:
       MYSQL_ROOT_PASSWORD: root_password
       MYSQL_DATABASE: mydatabase
@@ -29,3 +31,7 @@ services:
 
 volumes:
   mysql-data:
+
+networks:
+  mynetwork:
+    external: true
